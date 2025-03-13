@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
             )
             .httpBasic(withDefaults())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // No session will be created
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         
         return http.build();
     }
@@ -37,7 +37,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails user = User.builder()
         .username("admin")
-        .password(passwordEncoder().encode("password"))  // Securely hash password
+        .password(passwordEncoder().encode("admin"))
         .roles("USER")
         .build();
 

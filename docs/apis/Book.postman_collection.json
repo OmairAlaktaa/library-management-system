@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "83b817b5-d753-4f33-bd97-f97a0bcfaee4",
+		"name": "Book",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22307572"
+	},
+	"item": [
+		{
+			"name": "Get All Books",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/books",
+				"description": "Description: Retrieves a list of all books in the system.  \nResponse: Returns a list of BookResponseDTO objects containing book details."
+			},
+			"response": []
+		},
+		{
+			"name": "Get Book By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/books/1",
+				"description": "Description: Retrieves details of a specific book based on its ID.  \nPath Parameter:  \nbookId (Integer) – The unique identifier of the book.  \nResponse: Returns a BookResponseDTO object containing book details."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"New Book Title\",\r\n  \"author\": \"New Author\",\r\n  \"isbn\": \"1122334455\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/books",
+				"description": "Description: Creates a new book record in the system.  \nRequest Body: BookRequestDTO containing book information (e.g., title, author, ISBN).  \nResponse: Returns the newly created BookResponseDTO."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Updated Book Title\",\r\n  \"author\": \"Updated Author\",\r\n  \"isbn\": \"9988776655\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/books/1",
+				"description": "Description: Updates an existing book's details.  \nPath Parameter:  \nbookId (Integer) – The unique identifier of the book to update.  \nRequest Body: BookRequestDTO containing updated book information.  \nResponse: Returns the updated BookResponseDTO"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/api/books/12",
+				"description": "Description: Deletes a specific book from the system.  \nPath Parameter:  \nbookId (Integer) – The unique identifier of the book to delete."
+			},
+			"response": []
+		}
+	]
+}

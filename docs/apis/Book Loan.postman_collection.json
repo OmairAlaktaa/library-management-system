@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "dc30abfc-4ee4-4eaa-b365-d21cfaa7d00d",
+		"name": "Book Loan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22307572"
+	},
+	"item": [
+		{
+			"name": "Borrow Book",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/borrow/9/patron/5",
+				"description": "Description: Allows a patron to borrow a book from the library.  \nPath Parameters:  \nbookId (Integer) – The unique identifier of the book being borrowed.  \npatronId (Integer) – The unique identifier of the patron borrowing the book.  \nResponse: Returns a BookLoanResponseDTO containing loan details (e.g., due date, loan status)."
+			},
+			"response": []
+		},
+		{
+			"name": "Return Book",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/return/9/patron/5",
+				"description": "Description: Allows a patron to return a borrowed book.  \nPath Parameters:  \nbookId (Integer) – The unique identifier of the book being returned.  \npatronId (Integer) – The unique identifier of the patron returning the book.  \nResponse: Returns a BookLoanResponseDTO with updated loan details (e.g., return date, fines if applicable)."
+			},
+			"response": []
+		}
+	]
+}

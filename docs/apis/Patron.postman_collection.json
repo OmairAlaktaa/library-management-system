@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "d2bb7f65-0cc5-4414-845c-720b9470dd54",
+		"name": "Patron",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "22307572"
+	},
+	"item": [
+		{
+			"name": "Get All Patrons",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/patrons",
+				"description": "Description: Retrieves a list of all patrons (library members) in the system.  \nResponse: Returns a list of PatronResponseDTO objects containing patron details."
+			},
+			"response": []
+		},
+		{
+			"name": "Get PatronBy ID",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/api/patrons/1",
+				"description": "Description: Retrieves details of a specific patron based on their ID.  \nPath Parameter:  \npatronId (Integer) – The unique identifier of the patron.  \nResponse: Returns a PatronResponseDTO object containing patron details."
+			},
+			"response": []
+		},
+		{
+			"name": "Add Patron",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Mary\",\r\n  \"lastName\": \"Johnson\",\r\n  \"email\": \"mary.johnson@example.com\",\r\n  \"phoneNumber\": \"0123456789\"\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/patrons",
+				"description": "Description: Creates a new patron record in the system.  \nRequest Body: PatronRequestDTO containing patron information (e.g., name, contact details).  \nResponse: Returns the newly created PatronResponseDTO."
+			},
+			"response": []
+		},
+		{
+			"name": "Update Patron",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Updated Mary\",\r\n  \"lastName\": \"Updated Johnson\",\r\n  \"email\": \"mary.johnson@example.com\",\r\n  \"phoneNumber\": \"1123456789\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/patrons/10",
+				"description": "Description: Updates an existing patron's details.  \nPath Parameter:  \npatronId (Integer) – The unique identifier of the patron to update.  \nRequest Body: PatronRequestDTO containing updated patron information.  \nResponse: Returns the updated PatronResponseDTO."
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Patron",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"password": "admin",
+						"username": "admin"
+					}
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": "http://localhost:8080/api/books/7",
+				"description": "Description: Deletes a specific patron from the system.  \nPath Parameter:  \npatronId (Integer) – The unique identifier of the patron to delete.  \nResponse: No content is returned upon successful deletion."
+			},
+			"response": []
+		}
+	]
+}
