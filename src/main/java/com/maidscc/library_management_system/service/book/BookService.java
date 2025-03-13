@@ -17,7 +17,6 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    // Get all books
     public List<BookResponseDTO> getAllBooks() {
         List<Book> books = bookRepository.findAll();
         return books.stream()
@@ -25,21 +24,18 @@ public class BookService {
                 .collect(Collectors.toList());
     }
 
-    // Get a single book by ID
     public BookResponseDTO getBookById(Integer bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + bookId));
         return convertToResponseDTO(book);
     }
 
-    // Create a new book
     public BookResponseDTO createBook(BookRequestDTO bookRequestDTO) {
         Book book = convertToEntity(bookRequestDTO);
         Book savedBook = bookRepository.save(book);
         return convertToResponseDTO(savedBook);
     }
 
-    // Update an existing book
     public BookResponseDTO updateBook(Integer bookId, BookRequestDTO bookRequestDTO) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + bookId));
@@ -53,14 +49,12 @@ public class BookService {
         return convertToResponseDTO(updatedBook);
     }
 
-    // Delete a book
     public void deleteBook(Integer bookId) {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found with id: " + bookId));
         bookRepository.delete(book);
     }
 
-    // Convert Book entity to BookResponseDTO
     private BookResponseDTO convertToResponseDTO(Book book) {
         BookResponseDTO responseDTO = new BookResponseDTO();
         responseDTO.setBookID(book.getBookID());
@@ -71,7 +65,6 @@ public class BookService {
         return responseDTO;
     }
 
-    // Convert BookRequestDTO to Book entity
     private Book convertToEntity(BookRequestDTO bookRequestDTO) {
         Book book = new Book();
         book.setTitle(bookRequestDTO.getTitle());
@@ -80,4 +73,5 @@ public class BookService {
         book.setIsbn(bookRequestDTO.getIsbn());
         return book;
     }
+    
 }

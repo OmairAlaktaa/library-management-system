@@ -10,9 +10,9 @@ import lombok.NoArgsConstructor;
 public class ErrorResponse {
     private String message;
     private String details;
-    private int statusCode; // Field for HTTP status code
+    private int statusCode;
 
-    // Constructor with arguments
+
     public ErrorResponse(String message, String details, int statusCode) {
         this.message = message;
         this.details = details;

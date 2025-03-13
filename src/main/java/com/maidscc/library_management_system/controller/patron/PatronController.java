@@ -3,6 +3,8 @@ package com.maidscc.library_management_system.controller.patron;
 
 import com.maidscc.library_management_system.dto.patron.*;
 import com.maidscc.library_management_system.service.patron.PatronService;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -26,10 +28,12 @@ public class PatronController {
         return ResponseEntity.ok(patronService.getPatronById(patronId));
     }
 
+
     @PostMapping
     public ResponseEntity<PatronResponseDTO> createPatron(@RequestBody PatronRequestDTO patronRequest) {
-        return ResponseEntity.ok(patronService.createPatron(patronRequest));
-    }
+        PatronResponseDTO createdPatron = patronService.createPatron(patronRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdPatron);
+}
 
     @PutMapping("/{patronId}")
     public ResponseEntity<PatronResponseDTO> updatePatron(@PathVariable Integer patronId, @RequestBody PatronRequestDTO patronRequest) {

@@ -1,7 +1,9 @@
 package com.maidscc.library_management_system.model;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
