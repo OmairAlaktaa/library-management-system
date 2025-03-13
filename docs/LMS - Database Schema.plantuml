@@ -1,0 +1,33 @@
+@startuml
+entity Book {
+    + BookID : INT <<PK>>
+    --
+    Title : NVARCHAR(256)
+    Author : NVARCHAR(128)
+    PublicationYear : YEAR
+    ISBN : VARCHAR(17)
+}
+
+entity Patron {
+    + PatronID : INT <<PK>>
+    --
+    FirstName : NVARCHAR(128)
+    LastName : NVARCHAR(128)
+    Email : NVARCHAR(256)
+    PhoneNumber : VARCHAR(15)
+}
+
+entity BookLoan {
+    + LoanID : INT <<PK>>
+    --
+    BorrowDate : DATETIME
+    ReturnDate : DATETIME
+    --
+    + BookID : INT <<FK>>
+    + PatronID : INT <<FK>>
+}
+
+Book ||--o{ BookLoan 
+Patron ||--o{ BookLoan
+
+@enduml
