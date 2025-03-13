@@ -58,5 +58,10 @@ The application will start on `http://localhost:8080`
 | POST | `/borrow` | Borrow a book |
 | POST | `/return` | Return a book |
 
+## Authentication
+The system uses **Basic Authentication** for secure access. Use the following credentials:
+- **Username**: `admin`
+- **Password**: `admin`
+
 (For full API documentation, you can find it under douc folder in project)
 
