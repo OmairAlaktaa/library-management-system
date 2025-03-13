@@ -9,14 +9,13 @@ import com.maidscc.library_management_system.model.ErrorResponse;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    // Handling ResourceNotFoundException (404 Not Found)
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleResourceNotFound(ResourceNotFoundException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), "Resource not found.", HttpStatus.NOT_FOUND.value());
         return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
     }
 
-    // Handling BadRequestException (400 Bad Request)
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex) {
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), "Bad request.", HttpStatus.BAD_REQUEST.value());

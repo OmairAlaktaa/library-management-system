@@ -30,11 +30,11 @@ public class BookController {
         return ResponseEntity.ok(bookService.getBookById(bookId));
     }
 
-@PostMapping
-public ResponseEntity<BookResponseDTO> createBook(@RequestBody BookRequestDTO bookRequest) {
-    BookResponseDTO createdBook = bookService.createBook(bookRequest);
-    return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
-}
+    @PostMapping
+    public ResponseEntity<BookResponseDTO> createBook(@RequestBody BookRequestDTO bookRequest) {
+        BookResponseDTO createdBook = bookService.createBook(bookRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdBook);
+    }
 
 
     @PutMapping("/{bookId}")
